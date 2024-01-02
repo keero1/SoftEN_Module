@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Library</string>
+
+    <!-- app bar -->
+    <string name="appbar_search_description">Search books in the application</string>
+    <string name="appbar_search_title">Search</string>
+    <string name="appbar_search_hint">Type to search</string>
+    <string name="appbar_search_close">Close the search view</string>
+    <!-- nav -->
+    <string name="bottom_navigation_title_home">Home</string>
+    <string name="bottom_navigation_title_cart">Cart</string>
+    <string name="bottom_navigation_title_profile">Profile</string>
+
+    <!-- profile -->
+    <string name="profile_text">Profile</string>
+    <string name="profile_settings_description">Shows additional options.</string>
+
+
+    <string name="profile_user_name">Pangalan Mo</string>
+    <string name="joined_date">Joined since 23 Nov. 2023</string>
+    <string name="profile_picture_description">Profile picture of the user in Profile page</string>
+
+    <string name="profile_order_category">My Books</string>
+    <string name="profile_book_reservation">Show the list of books that are requested to be reserved.</string>
+    <string name="profile_book_return">Show the list of books that needs to be returned.</string>
+
+    <string name="profile_book_reservation_text">Reservation</string>
+    <string name="profile_book_return_text">Return</string>
+
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- default color -->
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <!-- rename nalang -->
+
+    <color name="dark_gray">#888b8e</color>
+
+    <color name="custom_darkest">#04364A</color>
+    <color name="custom_dark">#176B87</color>
+    <color name="teal_ata">#64CCC5</color>
+    <color name="custom_light">#DAFFFB</color>
+
+
+
+    <!-- color palette? paayos nalang -->
+
+    <color name="switch_track_day">#c8cbd6</color>
+
+    <color name="logout_red">#ff1616</color>
+
+    <!-- day -->
+    <color name="blue_day">#008fff</color>
+    <color name="green_day">#4fe3c1</color>
+    <color name="orange_day">#ff5436</color>
+
+    <color name="bg_day">#f4f4fb</color>
+    <color name="header_day">#f4f4fb</color>
+    <color name="footer_day">#eaecf4</color>
+
+    <!-- night -->
+    <color name="blue_night">#44adff</color>
+    <color name="green_night">#74ffe0</color>
+    <color name="orange_night">#74ffe0</color>
+
+    <color name="bg_night">#182649</color>
+    <color name="header_night">#2e3d60</color>
+    <color name="footer_night">#455781</color>
+
+    <!-- progress bar color -->
+    <color name="progress_bar_filled">#41b8d5</color>
+    <color name="progress_bar_unfilled">#6ce5e8</color>
+</resources>
