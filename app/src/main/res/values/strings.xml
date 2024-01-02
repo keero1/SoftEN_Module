@@ -27,4 +27,7 @@
     <string name="profile_book_reservation_text">Reservation</string>
     <string name="profile_book_return_text">Return</string>
 
+    <!-- home -->
+    <string name="books_text">Books</string>
+
 </resources>
