@@ -1,19 +1,19 @@
 package dev.keero.soften_module.model;
 
 public class Book {
-    private final int id;
+    private final String id;
     private final String bookName;
     private final String bookAuthor;
     private final String bookType;
 
-    public Book(int id, String bookName, String bookAuthor, String bookType) {
+    public Book(String id, String bookName, String bookAuthor, String bookType) {
         this.id = id;
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
         this.bookType = bookType;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

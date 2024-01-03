@@ -1,37 +1,39 @@
 package dev.keero.soften_module.utils;
 
+import android.util.Log;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.ArrayList;
 
 import dev.keero.soften_module.model.Book;
 public class BookPresenter {
-    // Dummy data.
-    private final static String[] bookName = {
-            "Book 1",
-            "Book 2",
-            "Book 3",
-            "Book 4",
-            "Book 5",
-            "Book 6"
-    };
+    private static final String TAG = "BookPresenter";
+    private static final String COLLECTION_PATH = "books";
 
-    private final static String[] bookAuthor = {
-            "Author 1",
-            "Author 2",
-            "Author 3",
-            "Author 4",
-            "Author 5",
-            "Author 6"
-    };
+    public void loadBooks(final FirestoreCallBack callBack){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        db.collection(COLLECTION_PATH).orderBy("bookTitle").get().addOnCompleteListener(task -> {
+            ArrayList<Book> books = new ArrayList<>();
+            if(task.isSuccessful()){
+                for(QueryDocumentSnapshot document : task.getResult()){
+                    String bookId = document.getId();
+                    String bookTitle = document.getString("bookTitle");
+                    String bookAuthor = document.getString("bookAuthor");
+                    String bookType = document.getString("bookType");
 
-    private final static String type = "Sex";
-    public ArrayList<Book> loadBook(final ArrayList<Book> books){
+                    Book book = new Book(bookId, bookTitle, bookAuthor, bookType);
+                    books.add(book);
+                }
 
-        for(int i = 0; i < bookName.length; i++){
-            Book bookItem = new Book(i, bookName[i], bookAuthor[i], type);
-            books.add(bookItem);
-        }
-
-        return books;
+                if(callBack != null){
+                    callBack.onBooksLoaded(books);
+                }
+            } else {
+                Log.w(TAG, "Error getting documents.", task.getException());
+            }
+        });
     }
 }
