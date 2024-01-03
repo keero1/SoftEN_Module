@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import dev.keero.soften_module.databinding.BookItemLayoutBinding;
 import dev.keero.soften_module.model.Book;
@@ -28,14 +29,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
     //initialize the dataset
     public BookAdapter(ArrayList<Book> dataSet){
         this.dataSet = dataSet;
-    }
-
-    //filtering
-    @SuppressLint("NotifyDataSetChanged")
-    public void filterList(ArrayList<Book> filterList){
-        this.dataSet = filterList;
-
-        notifyDataSetChanged();
     }
 
     // extends RecyclerView.ViewHolder and holds references to the views
@@ -57,12 +50,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
             }
         }
 
-        public void setBinding(Book book, int position){
+        public void setBinding(Book book){
 
             binding.bookTitle.setText(book.getBookName());
             binding.bookAuthor.setText(book.getBookAuthor());
             binding.bookType.setText(book.getBookType());
         }
+    }
+
+    //filter
+    @SuppressLint("NotifyDataSetChanged")
+    public void setFilteredList(ArrayList<Book> filteredList){
+        this.dataSet = Objects.requireNonNull(filteredList);
+        notifyDataSetChanged();
     }
 
     //Create new views (Invoked by layout manager)
@@ -79,7 +79,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder viewHolder, final int position){
         Log.d(TAG, "Element " + position + " set.");
         Book item = dataSet.get(position);
-        viewHolder.setBinding(item, position);
+        viewHolder.setBinding(item);
     }
 
     @Override
