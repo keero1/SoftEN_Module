@@ -1,20 +1,39 @@
 package dev.keero.soften_module;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import dev.keero.soften_module.activities.LoginActivity;
 import dev.keero.soften_module.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+
+    //firebase auth
+    private FirebaseAuth fAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //initialize firebase authentication
+        fAuth = FirebaseAuth.getInstance();
+
+        // trigger splashscreen
+        SplashScreen.installSplashScreen(this);
+
+        // return to the main theme.
+        setTheme(R.style.Theme_SoftEN_Module_NoActionBar);
 
         //set binding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -51,5 +70,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        FirebaseUser currentUser = fAuth.getCurrentUser();
+        if(currentUser != null){
+            return;
+        }
+
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
