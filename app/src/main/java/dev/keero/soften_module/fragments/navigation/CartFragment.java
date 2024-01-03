@@ -20,10 +20,9 @@ public class CartFragment extends Fragment {
         FragmentCartBinding binding = FragmentCartBinding.inflate(inflater, container, false);
 
         // get the root view from the binding object that is defined in the xml.
-        View view = binding.getRoot();
 
         // logic here
 
-        return view;
+        return binding.getRoot();
     }
 }

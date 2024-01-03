@@ -3,7 +3,6 @@ package dev.keero.soften_module.fragments.navigation;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
@@ -114,7 +113,7 @@ public class HomeFragment extends Fragment implements BookItemClickListener {
 
     private void filter(String text) {
         // creating a new array list to filter our data.
-        ArrayList<Book> filteredlist = new ArrayList<Book>();
+        ArrayList<Book> filteredList = new ArrayList<>();
 
         // running a for loop to compare elements.
         for (Book item : dataSet) {
@@ -122,17 +121,17 @@ public class HomeFragment extends Fragment implements BookItemClickListener {
             if (item.getBookName().toLowerCase().contains(text.toLowerCase())) {
                 // if the item is matched we are
                 // adding it to our filtered list.
-                filteredlist.add(item);
+                filteredList.add(item);
             }
         }
-        if (filteredlist.isEmpty()) {
+        if (filteredList.isEmpty()) {
             // if no item is added in filtered list we are
             // displaying a toast message as no data found.
             Log.d(TAG, " No data found...");
         } else {
             // at last we are passing that filtered
             // list to our adapter class.
-            adapter.filterList(filteredlist);
+            adapter.filterList(filteredList);
         }
     }
 

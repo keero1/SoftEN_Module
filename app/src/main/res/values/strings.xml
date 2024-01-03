@@ -30,4 +30,19 @@
     <!-- home -->
     <string name="books_text">Books</string>
 
+    <!-- login -->
+    <string name="login_welcome_text">Welcome!</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_forgot_password_text">Forgot Password?</string>
+    <string name="login_button">Login</string>
+    <string name="login_continue_text">or continue with</string>
+    <string name="google_image_description">sign in using google account</string>
+    <string name="signup_text">Sign Up</string>
+
+    <!-- register -->
+    <string name="register_text">Register</string>
+    <string name="register_button">Sign Up</string>
+    <string name="register_display_name">Full Name</string>
+
 </resources>
