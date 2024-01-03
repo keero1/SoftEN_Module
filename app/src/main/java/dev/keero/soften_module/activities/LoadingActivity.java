@@ -17,14 +17,11 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(LoadingActivity.this, "Authenticated successfully.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Toast.makeText(LoadingActivity.this, "Authenticated successfully.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }, 3000); // Adjust the delay as needed
     }
 }

@@ -10,7 +10,6 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -18,7 +17,6 @@ import dev.keero.soften_module.activities.LoginActivity;
 import dev.keero.soften_module.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
 
     //firebase auth
     private FirebaseAuth fAuth;
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_SoftEN_Module_NoActionBar);
 
         //set binding
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        dev.keero.soften_module.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // navigation

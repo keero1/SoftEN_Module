@@ -1,21 +1,15 @@
 package dev.keero.soften_module.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import dev.keero.soften_module.MainActivity;
 import dev.keero.soften_module.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -47,13 +41,9 @@ public class LoginActivity extends AppCompatActivity {
 
         // Forgot password and Google
 
-        binding.googleButton.setOnClickListener(v -> {
-            Toast.makeText(LoginActivity.this, "Not yet implemented.", Toast.LENGTH_SHORT).show();
-        });
+        binding.googleButton.setOnClickListener(v -> Toast.makeText(LoginActivity.this, "Not yet implemented.", Toast.LENGTH_SHORT).show());
 
-        binding.loginForgotPassword.setOnClickListener(v -> {
-            Toast.makeText(LoginActivity.this, "not yet implemented", Toast.LENGTH_SHORT).show();
-        });
+        binding.loginForgotPassword.setOnClickListener(v -> Toast.makeText(LoginActivity.this, "not yet implemented", Toast.LENGTH_SHORT).show());
 
         // Sign Up button
 

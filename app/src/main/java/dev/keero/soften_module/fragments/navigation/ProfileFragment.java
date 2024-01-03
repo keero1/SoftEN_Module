@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Objects;
 
 import dev.keero.soften_module.activities.LoginActivity;
 import dev.keero.soften_module.databinding.FragmentProfileBinding;
@@ -24,7 +23,6 @@ import dev.keero.soften_module.utils.DateUtils;
 public class ProfileFragment extends Fragment {
     private static final String TAG = "ProfileFragment";
     private FirebaseAuth fAuth;
-    private FirebaseUser fUser;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -32,7 +30,7 @@ public class ProfileFragment extends Fragment {
         //firebase
 
         fAuth = FirebaseAuth.getInstance();
-        fUser = fAuth.getCurrentUser();
+        FirebaseUser fUser = fAuth.getCurrentUser();
 
 
         // inflate layout using DataBindingUtil
@@ -42,6 +40,7 @@ public class ProfileFragment extends Fragment {
         View view = binding.getRoot();
 
         // get the info of user
+        assert fUser != null;
         String displayName = fUser.getDisplayName();
 
         assert fUser.getMetadata() != null;

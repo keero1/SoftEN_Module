@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/profile_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/profile_settings_description"
@@ -98,8 +98,8 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginStart="108dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
         android:layout_marginTop="12dp"
         android:text="@string/profile_book_reservation_text"
         android:textAlignment="center"
@@ -118,10 +118,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:layout_width="54dp"
-        android:layout_height="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="103dp"
         android:text="@string/profile_book_return_text"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
