@@ -45,6 +45,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Forgot password and Google
+
+        binding.googleButton.setOnClickListener(v -> {
+            Toast.makeText(LoginActivity.this, "Not yet implemented.", Toast.LENGTH_SHORT).show();
+        });
+
+        binding.loginForgotPassword.setOnClickListener(v -> {
+            Toast.makeText(LoginActivity.this, "not yet implemented", Toast.LENGTH_SHORT).show();
+        });
+
+        // Sign Up button
+
         binding.signUpButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
@@ -67,9 +79,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            Toast.makeText(LoginActivity.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Logging in...", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
             startActivity(intent);
             finish();
         } else {

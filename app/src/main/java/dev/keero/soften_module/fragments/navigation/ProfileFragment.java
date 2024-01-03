@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,6 +60,8 @@ public class ProfileFragment extends Fragment {
             Intent intent = new Intent(requireActivity(), LoginActivity.class);
             startActivity(intent);
             requireActivity().finish();
+
+            Toast.makeText(requireActivity(), "logged out successfully.", Toast.LENGTH_SHORT).show();
         });
 
         return view;
