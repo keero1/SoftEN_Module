@@ -119,8 +119,12 @@ public class HomeFragment extends Fragment implements BookItemClickListener, Fir
 
     @Override
     public void onBooksLoaded(ArrayList<Book> books){
+
+        if(!isAdded()) return; //checks if fragment is attached.
+
         dataSet = books;
         adapter = new BookAdapter(dataSet);
+
 
         // sets the layout manager as linear (since we're only using scrollable list.)
         layoutManager = new LinearLayoutManager(requireContext());
