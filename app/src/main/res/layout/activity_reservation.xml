@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.navigation.CartFragment">
+    tools:context=".activities.profile.ReservationActivity">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cart_title_text"
+        android:text="@string/reservation_text"
         android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"
         android:textStyle="bold"
@@ -26,24 +22,25 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cart_recycler_view"
+            android:id="@+id/reservation_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"/>
 
         <!-- empty recycler view -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cart_default_view"
+            android:id="@+id/reservation_default_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="248dp"
-                android:text="@string/default_cart_content_text"
+                android:text="@string/empty_reservation_text"
+                android:textAlignment="center"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
@@ -66,28 +63,9 @@
             android:id="@+id/progress_circular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:visibility="gone"/>
 
     </FrameLayout>
+
 </LinearLayout>
-
-    <!-- Button on the bottom right -->
-    <TextView
-        android:id="@+id/checkout_button"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_style"
-        android:backgroundTint="#176B87"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/book_add_text"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="16dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:visibility="gone"/>
-
-</RelativeLayout>
