@@ -18,17 +18,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 import dev.keero.soften_module.R;
 import dev.keero.soften_module.adapter.BookAdapter;
 import dev.keero.soften_module.databinding.FragmentHomeBinding;
 import dev.keero.soften_module.model.Book;
-import dev.keero.soften_module.utils.BookItemClickListener;
-import dev.keero.soften_module.utils.BookPresenter;
-import dev.keero.soften_module.utils.FirestoreCallBack;
+import dev.keero.soften_module.utils.presenters.BookPresenter;
+import dev.keero.soften_module.utils.DialogUtils;
+import dev.keero.soften_module.utils.firebase.callbacks.BookCallBack;
+import dev.keero.soften_module.utils.ItemClickListener;
 
-public class HomeFragment extends Fragment implements BookItemClickListener, FirestoreCallBack {
+public class HomeFragment extends Fragment implements ItemClickListener, BookCallBack {
     private static final String TAG = "HomeFragment";
     protected RecyclerView.LayoutManager layoutManager;
     protected ArrayList<Book> dataSet;
@@ -64,10 +67,7 @@ public class HomeFragment extends Fragment implements BookItemClickListener, Fir
                 MenuItem item = menu.findItem(R.id.action_search);
                 SearchView search = (SearchView) item.getActionView();
 
-                assert search != null;
-                search.setQueryHint(getString(R.string.appbar_search_hint));
-
-                // Add option Menu Here
+                Objects.requireNonNull(search).setQueryHint(getString(R.string.appbar_search_hint));
 
                 search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
@@ -119,30 +119,27 @@ public class HomeFragment extends Fragment implements BookItemClickListener, Fir
 
     @Override
     public void onBooksLoaded(ArrayList<Book> books){
-
         if(!isAdded()) return; //checks if fragment is attached.
 
         dataSet = books;
         adapter = new BookAdapter(dataSet);
 
-
         // sets the layout manager as linear (since we're only using scrollable list.)
         layoutManager = new LinearLayoutManager(requireContext());
 
         //set click listener
-        adapter.setBookItemClickListener(this);
+        adapter.setItemClickListener(this);
 
         binding.bookRecyclerView.setAdapter(adapter);
         binding.bookRecyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
-    public void onBookItemClickListener(int position){
-        if(originalPosition != null){
-            Log.d(TAG, " Clicked " + dataSet.get(originalPosition.get(position)).getId());
-        } else {
-            Log.d(TAG, " Clicked " + dataSet.get(position).getId());
-        }
-    }
+    public void onItemClickListener(int position){
+        int actualPosition = ((originalPosition != null && originalPosition.size() > position )? originalPosition.get(position) : position);
 
+        Log.d(TAG, " Clicked " + dataSet.get(actualPosition).getId());
+
+        DialogUtils.showDialog(requireContext(), dataSet.get(actualPosition), false);
+    }
 }

@@ -29,6 +29,8 @@
 
     <!-- home -->
     <string name="books_text">Books</string>
+    <string name="book_add_text">Add</string>
+    <string name="book_cancel_text">Cancel</string>
 
     <!-- login -->
     <string name="login_welcome_text">Welcome!</string>
@@ -44,5 +46,13 @@
     <string name="register_text">Register</string>
     <string name="register_button">Sign Up</string>
     <string name="register_display_name">Full Name</string>
+    <string name="book_title_placeholder">Title</string>
+    <string name="book_author_placeholder">Author</string>
+    <string name="book_description_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
+    <!-- cart -->
+    <string name="cart_title_text">Cart</string>
+    <string name="default_cart_content_text">Your Cart is Empty.</string>
+    <string name="shopping_cart_icon_for_default_view">shopping cart icon for default view</string>
+    <string name="cart_remove_item_text">Remove</string>
 </resources>
