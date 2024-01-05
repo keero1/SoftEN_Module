@@ -180,5 +180,9 @@ public class DialogUtils {
         }
     }
 
+    public static void dismissDialog(){
+        dialog.dismiss();
+    }
+
 
 }
