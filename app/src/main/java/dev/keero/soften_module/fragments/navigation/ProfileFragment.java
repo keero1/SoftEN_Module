@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 import dev.keero.soften_module.activities.LoginActivity;
+import dev.keero.soften_module.activities.profile.ReservationActivity;
+import dev.keero.soften_module.activities.profile.ReturnActivity;
 import dev.keero.soften_module.databinding.FragmentProfileBinding;
 import dev.keero.soften_module.utils.DateUtils;
 
@@ -61,6 +63,18 @@ public class ProfileFragment extends Fragment {
             requireActivity().finish();
 
             Toast.makeText(requireActivity(), "logged out successfully.", Toast.LENGTH_SHORT).show();
+        });
+
+        // buttons
+
+        binding.profileReservation.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), ReservationActivity.class);
+            startActivity(intent);
+        });
+
+        binding.profileReturn.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), ReturnActivity.class);
+            startActivity(intent);
         });
 
         return view;

@@ -46,6 +46,13 @@ public class CartFragment extends Fragment implements ItemClickListener, CartCal
         binding.progressCircular.setVisibility(View.VISIBLE);
 
         new CartPresenter().loadCart(FirebaseUtils.getCurrentUserId(), this);
+
+        // check out
+
+        binding.checkoutButton.setOnClickListener(v -> {
+            DialogUtils.dismissDialog();
+        });
+
         return view;
     }
 
@@ -69,9 +76,11 @@ public class CartFragment extends Fragment implements ItemClickListener, CartCal
         if (dataSet == null || dataSet.isEmpty()) {
             binding.cartRecyclerView.setVisibility(View.GONE);
             binding.cartDefaultView.setVisibility(View.VISIBLE);
+            binding.checkoutButton.setVisibility(View.GONE);
         } else {
             binding.cartRecyclerView.setVisibility(View.VISIBLE);
             binding.cartDefaultView.setVisibility(View.GONE);
+            binding.checkoutButton.setVisibility(View.VISIBLE);
         }
 
 
