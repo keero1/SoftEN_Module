@@ -14,15 +14,15 @@ import java.util.Objects;
 
 import dev.keero.soften_module.databinding.BookItemLayoutBinding;
 import dev.keero.soften_module.model.Book;
-import dev.keero.soften_module.utils.BookItemClickListener;
+import dev.keero.soften_module.utils.ItemClickListener;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
     private static final String TAG = "BookAdapter";
     private ArrayList<Book> dataSet;
 
     // listener
-    private BookItemClickListener listener;
-    public void setBookItemClickListener(BookItemClickListener listener){
+    private ItemClickListener listener;
+    public void setItemClickListener(ItemClickListener listener){
         this.listener = listener;
     }
 
@@ -46,7 +46,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
         @Override
         public void onClick(View view){
             if(listener != null){
-                listener.onBookItemClickListener(getAdapterPosition());
+                listener.onItemClickListener(getAdapterPosition());
             }
         }
 
@@ -86,7 +86,4 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
     public int getItemCount(){
         return dataSet.size();
     }
-
-
-
 }
