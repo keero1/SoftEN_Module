@@ -55,4 +55,8 @@
     <string name="default_cart_content_text">Your Cart is Empty.</string>
     <string name="shopping_cart_icon_for_default_view">shopping cart icon for default view</string>
     <string name="cart_remove_item_text">Remove</string>
+    <string name="empty_return_books_text">You do not have any books to return</string>
+    <string name="returns_text">Returns</string>
+    <string name="reservation_text">Reservation</string>
+    <string name="empty_reservation_text">You do not have any reservations.</string>
 </resources>

@@ -41,9 +41,16 @@ public class LoginActivity extends AppCompatActivity {
 
         // Forgot password and Google
 
-        binding.googleButton.setOnClickListener(v -> Toast.makeText(LoginActivity.this, "Not yet implemented.", Toast.LENGTH_SHORT).show());
+        binding.loginForgotPassword.setOnClickListener(v -> {
+            //qwe
+            Toast.makeText(LoginActivity.this, "Not yet implemented.", Toast.LENGTH_SHORT).show();
+        });
 
-        binding.loginForgotPassword.setOnClickListener(v -> Toast.makeText(LoginActivity.this, "not yet implemented", Toast.LENGTH_SHORT).show());
+        binding.googleButton.setOnClickListener(v -> {
+            //zxc
+            Toast.makeText(LoginActivity.this, "Not yet implemented.", Toast.LENGTH_SHORT).show();
+        });
+
 
         // Sign Up button
 
