@@ -29,7 +29,7 @@
         android:clickable="true"
         android:contentDescription="@string/profile_settings_description"
         android:focusable="true"
-        android:src="@drawable/ic_settings"
+        android:src="@drawable/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />

@@ -109,6 +109,11 @@ public class HomeFragment extends Fragment implements ItemClickListener, BookCal
                 filteredList.add(item);
                 originalPosition.add(i);
             }
+
+            if(item.getBookType().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+                originalPosition.add(i);
+            }
         }
         if (filteredList.isEmpty()) {
             Log.d(TAG, " No data found...");

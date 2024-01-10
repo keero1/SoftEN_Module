@@ -59,4 +59,6 @@
     <string name="returns_text">Returns</string>
     <string name="reservation_text">Reservation</string>
     <string name="empty_reservation_text">You do not have any reservations.</string>
+
+    <string name="client_id">604490110837-m7n5ckvgmm879l4j8ilf5n2ulir4lr6i.apps.googleusercontent.com</string>
 </resources>

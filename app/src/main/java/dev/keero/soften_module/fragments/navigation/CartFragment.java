@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -50,7 +51,10 @@ public class CartFragment extends Fragment implements ItemClickListener, CartCal
         // check out
 
         binding.checkoutButton.setOnClickListener(v -> {
-            DialogUtils.dismissDialog();
+
+            // Transfer items to reservation and delete from cart
+            new CartPresenter().checkout(FirebaseUtils.getCurrentUserId(), dataSet, this);
+            Toast.makeText(requireContext(), "Added Books into reservation.", Toast.LENGTH_SHORT).show();
         });
 
         return view;

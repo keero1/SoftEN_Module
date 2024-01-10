@@ -25,8 +25,9 @@ public class BookPresenter {
                     String bookTitle = document.getString("bookTitle");
                     String bookAuthor = document.getString("bookAuthor");
                     String bookType = document.getString("bookType");
+                    String bookDescription = document.getString("bookDescription");
 
-                    Book book = new Book(bookId, bookTitle, bookAuthor, bookType);
+                    Book book = new Book(bookId, bookTitle, bookAuthor, bookType, bookDescription);
                     books.add(book);
                 }
 

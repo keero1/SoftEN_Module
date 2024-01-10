@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,11 +25,13 @@ import java.util.Objects;
 import dev.keero.soften_module.R;
 import dev.keero.soften_module.model.Book;
 import dev.keero.soften_module.model.Cart;
+import dev.keero.soften_module.model.Reservation;
 import dev.keero.soften_module.utils.firebase.FirebaseUtils;
 
 public class DialogUtils {
     private static final String TAG = "DialogUtils";
     private static final String CART_COLLECTION_PATH = "users_cart";
+    private static final String RESERVATION_COLLECTION_PATH = "users_reservation";
     private static DocumentReference userCartRef;
     private static Dialog dialog;
 
@@ -56,6 +61,12 @@ public class DialogUtils {
         dialog.show();
     }
 
+    public static void showDialog(Context context, Book book) {
+        initializeDB();
+        setupDialog(context, book);
+        dialog.show();
+    }
+
     // dialog setup.
     private static void setupDialog(Context context, Book book, boolean isCart){
         dialog = new Dialog(context, R.style.DialogStyle);
@@ -69,12 +80,26 @@ public class DialogUtils {
         setButtons(context, book, isCart);
     }
 
+    private static void setupDialog(Context context, Book book){
+        dialog = new Dialog(context, R.style.DialogStyle);
+        dialog.setContentView(R.layout.book_dialogue_layout);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.rounded_corner_view);
+        }
+
+        setBookDetails(book);
+        setButtons();
+    }
+
     private static void setBookDetails(Book book){
         TextView bookTitle = dialog.findViewById(R.id.book_title);
         TextView bookAuthor = dialog.findViewById(R.id.book_author);
+        TextView bookDescription = dialog.findViewById(R.id.book_description);
 
         bookTitle.setText(book.getBookName());
         bookAuthor.setText(book.getBookAuthor());
+        bookDescription.setText(book.getBookDescription());
     }
 
     private static void setButtons(Context context, Book book, boolean isCart){
@@ -89,6 +114,23 @@ public class DialogUtils {
         }
 
         add.setOnClickListener(v -> handleCart(context, book, isCart));
+    }
+
+    private static void setButtons(){
+        TextView cancel = dialog.findViewById(R.id.cancel_book);
+        TextView add = dialog.findViewById(R.id.add_book);
+
+        add.setVisibility(View.GONE);
+
+        // Set the gravity for cancel_book within the LinearLayout
+        LinearLayout.LayoutParams cancelParams = new LinearLayout.LayoutParams(
+                300,  // Set width to 150dp
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        cancelParams.gravity = Gravity.CENTER_HORIZONTAL;  // Center horizontally
+        cancel.setLayoutParams(cancelParams);
+
+        cancel.setOnClickListener(v -> dialog.dismiss());
     }
 
     // ----------- CART HANDLE -------------- //
@@ -109,9 +151,32 @@ public class DialogUtils {
                 removeItem(documentSnapshot, book, context);
                 return;
             }
-            addToCart(documentSnapshot, book, context);
+            hasItemInReservation(documentSnapshot, context, book);
         });
     }
+
+    // check if reservation has any item.
+    private static void hasItemInReservation(DocumentSnapshot cartDocumentSnapshot, Context context, Book book) {
+        DocumentReference usersReservationRef = FirebaseFirestore.getInstance().collection(RESERVATION_COLLECTION_PATH).document(Objects.requireNonNull(FirebaseUtils.getCurrentUserId()));
+
+        usersReservationRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                // Check if there are items in the reservation
+                Reservation reservation = documentSnapshot.toObject(Reservation.class);
+                if (reservation != null && reservation.getReservation() != null && !reservation.getReservation().isEmpty()) {
+                    // Inform the user that there are items in the reservation
+                    addToCart(cartDocumentSnapshot, book, context);
+                } else {
+                    // No items in reservation, proceed with addToCart
+                    Toast.makeText(context, "You have items in the reservation. You cannot add books to cart.", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                // Handle the case where the reservation document does not exist
+                addToCart(cartDocumentSnapshot, book, context);
+            }
+        });
+    }
+
 
     private static void addToCart(DocumentSnapshot documentSnapshot, Book book, Context context) {
         Cart cart = documentSnapshot.toObject(Cart.class);
@@ -179,10 +244,5 @@ public class DialogUtils {
             Log.d(TAG, "Trying to remove an item that does not exist in Cart.");
         }
     }
-
-    public static void dismissDialog(){
-        dialog.dismiss();
-    }
-
 
 }

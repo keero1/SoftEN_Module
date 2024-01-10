@@ -61,6 +61,9 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
 
+    // Also add the dependency for the Google Play services library and specify its version
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+
     //splash screen
     implementation("androidx.core:core-splashscreen:1.0.1")
 }

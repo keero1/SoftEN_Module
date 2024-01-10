@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.SoftEN_Module.SplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/shork_bg</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/library</item>
         <item name="postSplashScreenTheme">@style/Theme.SoftEN_Module</item>
     </style>
 </resources>
